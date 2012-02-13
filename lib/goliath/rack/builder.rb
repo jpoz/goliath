@@ -37,7 +37,8 @@ module Goliath
                 env['params'] ||= {}
                 env['params'].merge!(env['router.params']) if env['router.params']
 
-                builder.params = builder.retrieve_params(env)
+                # This is blowing up ASYNC_BODY routes
+                # builder.params = builder.retrieve_params(env)
                 builder.instance_eval(&blk) if blk
 
                 if route_klass
